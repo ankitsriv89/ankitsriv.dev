@@ -1,26 +1,146 @@
 @import "tailwindcss";
 
+/* ── Cyberpunk design tokens ── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg:           #050810;
+  --bg2:          #090d1a;
+  --bg3:          #0d1424;
+  --panel:        #0b1120;
+  --border:       #1a2540;
+  --border-bright:#243560;
+  --cyan:         #00d4ff;
+  --cyan-dim:     #0090b3;
+  --green:        #00ff9d;
+  --green-dim:    #00a362;
+  --amber:        #ffb700;
+  --amber-dim:    #8a6200;
+  --red:          #ff3860;
+  --text:         #c8d8f0;
+  --text-dim:     #4a6080;
+  --text-bright:  #e8f0ff;
+
+  --glow-cyan:    0 0 20px rgba(0,212,255,0.3), 0 0 40px rgba(0,212,255,0.1);
+  --glow-green:   0 0 20px rgba(0,255,157,0.3), 0 0 40px rgba(0,255,157,0.1);
+  --glow-amber:   0 0 20px rgba(255,183,0,0.3),  0 0 40px rgba(255,183,0,0.1);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background: var(--bg);
+  --color-foreground: var(--text);
+  --font-mono: var(--font-ibm-mono);
+  --font-sans: var(--font-rajdhani);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+/* ── Base ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-rajdhani), 'Rajdhani', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
+
+/* ── Scanline overlay ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,0,0,0.03) 2px,
+    rgba(0,0,0,0.03) 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ── Typography ── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-rajdhani), 'Rajdhani', sans-serif;
+  color: var(--text-bright);
+  letter-spacing: 0.05em;
+}
+
+code, pre, .mono {
+  font-family: var(--font-ibm-mono), 'IBM Plex Mono', monospace;
+}
+
+/* ── Utility classes ── */
+.text-cyan   { color: var(--cyan); }
+.text-green  { color: var(--green); }
+.text-amber  { color: var(--amber); }
+.text-dim    { color: var(--text-dim); }
+.text-bright { color: var(--text-bright); }
+
+.border-panel { border-color: var(--border); }
+.bg-panel     { background: var(--panel); }
+
+.glow-cyan  { box-shadow: var(--glow-cyan); }
+.glow-green { box-shadow: var(--glow-green); }
+
+/* ── Panel card ── */
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.panel:hover {
+  border-color: var(--border-bright);
+  box-shadow: 0 0 30px rgba(0,212,255,0.08);
+}
+
+/* ── Glowing label ── */
+.label-cyan {
+  font-family: var(--font-ibm-mono), monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cyan);
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg2); }
+::-webkit-scrollbar-thumb { background: var(--border-bright); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--cyan-dim); }
+
+/* ── Selection ── */
+::selection { background: rgba(0,212,255,0.2); color: var(--cyan); }
+
+/* ── Animations ── */
+@keyframes pulse-cyan {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+@keyframes flicker {
+  0%, 95%, 100% { opacity: 1; }
+  96%            { opacity: 0.8; }
+  97%            { opacity: 1; }
+  98%            { opacity: 0.6; }
+}
+@keyframes scanline {
+  0%   { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+.animate-pulse-cyan { animation: pulse-cyan 2s ease-in-out infinite; }
+.animate-flicker    { animation: flicker 8s ease-in-out infinite; }
+
+/* ── Link hover utilities (CSS-only, safe for Server Components) ── */
+.footer-link {
+  color: var(--text-dim);
+  transition: color 0.15s;
+}
+.footer-link:hover { color: var(--cyan); }
+
+.project-live-link {
+  color: var(--text-dim);
+  transition: color 0.15s;
+}
+.project-live-link:hover { color: var(--green); }
