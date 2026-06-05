@@ -1,12 +1,13 @@
-import PlaceholderPage from "@/components/sections/PlaceholderPage";
+import type { Metadata } from "next";
+import { getTimelineEvents } from "@/lib/timeline";
+import TimelineView from "@/components/sections/TimelineView";
 
-export default function Page() {
-  return (
-    <PlaceholderPage
-      eyebrow="Timeline"
-      title="The project and career timeline is next."
-      description="This page will connect the public work to the sequence of decisions, roles, experiments, and technical milestones behind it."
-      items={["Career milestones", "Project launch history", "Learning roadmap"]}
-    />
-  );
+export const metadata: Metadata = {
+  title: "Timeline — Ankit Srivastava",
+  description: "Career and life timeline — jobs, projects, education, and milestones.",
+};
+
+export default async function TimelinePage() {
+  const events = await getTimelineEvents();
+  return <TimelineView events={events} />;
 }

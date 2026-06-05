@@ -1,0 +1,24 @@
+[
+  {
+    "id": "c1",
+    "name": "TODO: Add certification name",
+    "issuer": "TODO: e.g. AWS, Google Cloud, HashiCorp",
+    "issuerShort": "TODO",
+    "date": "2024",
+    "credentialId": "TODO",
+    "verifyUrl": "https://example.com/verify",
+    "badgeColor": "var(--amber)",
+    "tags": ["TODO"]
+  },
+  {
+    "id": "c2",
+    "name": "TODO: Add certification name",
+    "issuer": "TODO: e.g. Confluent, CKAD, CKA",
+    "issuerShort": "TODO",
+    "date": "2023",
+    "credentialId": "TODO",
+    "verifyUrl": "https://example.com/verify",
+    "badgeColor": "var(--cyan)",
+    "tags": ["TODO"]
+  }
+]

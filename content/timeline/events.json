@@ -1,0 +1,47 @@
+[
+  {
+    "id": "t1",
+    "year": 2024,
+    "month": "Jan",
+    "title": "System Design Portfolio",
+    "description": "Started building 50 distributed systems from scratch — rate limiters, caches, message queues, and more. Learning in public.",
+    "type": "project",
+    "link": "https://anksysdesign.pages.dev"
+  },
+  {
+    "id": "t2",
+    "year": 2023,
+    "month": "Aug",
+    "title": "datastream-lab",
+    "description": "Started experimenting with Kafka and ClickHouse for real-time streaming across AWS, GCP, and Azure.",
+    "type": "project",
+    "link": "https://github.com/ankitsriv89/datastream-lab"
+  },
+  {
+    "id": "t3",
+    "year": 2022,
+    "month": "Jan",
+    "title": "TODO: Add job or milestone",
+    "description": "TODO: Add description of what you were doing, what you built, or what you learned.",
+    "type": "job",
+    "link": null
+  },
+  {
+    "id": "t4",
+    "year": 2020,
+    "month": "Mar",
+    "title": "TODO: Add job or milestone",
+    "description": "TODO: Fill in your career history here.",
+    "type": "job",
+    "link": null
+  },
+  {
+    "id": "t5",
+    "year": 2019,
+    "month": "Jun",
+    "title": "TODO: Education or first role",
+    "description": "TODO: Add your educational background or first professional role.",
+    "type": "education",
+    "link": null
+  }
+]

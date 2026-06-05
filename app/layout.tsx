@@ -17,16 +17,23 @@ const ibmMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Ankit Srivastava",
-  description: "Software engineer, systems thinker, builder.",
+  title: { default: "Ankit Srivastava", template: "%s — Ankit Srivastava" },
+  description: "Software engineer focused on distributed systems, data pipelines, and backend infrastructure.",
+  metadataBase: new URL("https://ankitsriv.dev"),
   openGraph: {
     title: "Ankit Srivastava",
-    description: "Software engineer, systems thinker, builder.",
+    description: "Software engineer focused on distributed systems, data pipelines, and backend infrastructure.",
     url: "https://ankitsriv.dev",
     siteName: "ankitsriv.dev",
     locale: "en_US",
     type: "website",
   },
+  twitter: {
+    card: "summary",
+    title: "Ankit Srivastava",
+    description: "Software engineer focused on distributed systems, data pipelines, and backend infrastructure.",
+  },
+  robots: { index: true, follow: true },
 };
 
 export default function RootLayout({

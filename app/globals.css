@@ -203,3 +203,80 @@ a {
   transition: color 0.15s;
 }
 .project-live-link:hover { color: var(--green); }
+
+/* ── Prose styles for MDX blog/diary content ── */
+.prose-cyberpunk {
+  color: var(--text);
+  font-size: 1rem;
+  line-height: 1.8;
+  max-width: 72ch;
+}
+.prose-cyberpunk h1,
+.prose-cyberpunk h2,
+.prose-cyberpunk h3,
+.prose-cyberpunk h4 {
+  color: var(--text-bright);
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.2;
+}
+.prose-cyberpunk h2 { font-size: 1.5rem; }
+.prose-cyberpunk h3 { font-size: 1.25rem; }
+.prose-cyberpunk p  { margin-bottom: 1.25rem; }
+.prose-cyberpunk a  {
+  color: var(--cyan);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.15s;
+}
+.prose-cyberpunk a:hover { color: var(--text-bright); }
+.prose-cyberpunk ul,
+.prose-cyberpunk ol {
+  margin: 0 0 1.25rem 1.5rem;
+}
+.prose-cyberpunk li { margin-bottom: 0.4rem; }
+.prose-cyberpunk ul li { list-style: disc; }
+.prose-cyberpunk ol li { list-style: decimal; }
+.prose-cyberpunk blockquote {
+  border-left: 3px solid var(--cyan-dim);
+  padding-left: 1rem;
+  color: var(--text-dim);
+  font-style: italic;
+  margin: 1.5rem 0;
+}
+.prose-cyberpunk code {
+  font-family: var(--font-ibm-mono), monospace;
+  font-size: 0.875em;
+  color: var(--cyan);
+  background: rgba(63, 215, 255, 0.08);
+  border: 1px solid rgba(63, 215, 255, 0.18);
+  border-radius: 4px;
+  padding: 0.1em 0.4em;
+}
+.prose-cyberpunk pre {
+  background: var(--bg3) !important;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.25rem;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+.prose-cyberpunk pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  color: inherit;
+  font-size: 0.875rem;
+}
+.prose-cyberpunk hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 2rem 0;
+}
+.prose-cyberpunk strong { color: var(--text-bright); font-weight: 600; }
+.prose-cyberpunk img {
+  max-width: 100%;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  margin: 1.5rem 0;
+}

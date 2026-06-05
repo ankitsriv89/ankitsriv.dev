@@ -1,12 +1,20 @@
-import PlaceholderPage from "@/components/sections/PlaceholderPage";
+import ResumeView from "@/components/sections/ResumeView";
+import { getResume, RESUME_VERSIONS } from "@/lib/resume";
+import type { ResumeVersion, ResumeData } from "@/lib/resume";
 
-export default function Page() {
-  return (
-    <PlaceholderPage
-      eyebrow="Resume"
-      title="Experience details are being organized."
-      description="This route will present a concise engineering resume with systems work, core skills, project depth, and contact paths."
-      items={["Experience timeline", "Skills by domain", "Downloadable resume"]}
-    />
-  );
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Resume — Ankit Srivastava",
+  description: "Software engineer resume — distributed systems, data pipelines, backend infrastructure.",
+};
+
+export default async function ResumePage() {
+  const all = Object.fromEntries(
+    await Promise.all(
+      RESUME_VERSIONS.map(async (v) => [v, await getResume(v)])
+    )
+  ) as Record<ResumeVersion, ResumeData>;
+
+  return <ResumeView initial={all.swe} all={all} />;
 }

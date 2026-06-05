@@ -1,0 +1,59 @@
+{
+  "version": "ml",
+  "label": "ML Engineer",
+  "name": "Ankit Srivastava",
+  "title": "ML Engineer — Data Infrastructure & Pipelines",
+  "email": "anksr2018@gmail.com",
+  "github": "https://github.com/ankitsriv89",
+  "linkedin": "https://linkedin.com/in/ankitsriv89",
+  "location": "India",
+  "summary": "Engineer with a strong data infrastructure background applying ML at scale. Focuses on building reliable feature pipelines, embeddings infrastructure, and model-serving platforms that make ML systems production-ready.",
+  "experience": [
+    {
+      "company": "TODO: Add company name",
+      "role": "Senior Software Engineer",
+      "period": "2022 – Present",
+      "location": "Remote",
+      "bullets": [
+        "TODO: Add ML infrastructure achievement",
+        "TODO: Add feature pipeline or model serving achievement",
+        "TODO: Add measurable ML impact"
+      ]
+    },
+    {
+      "company": "TODO: Add company name",
+      "role": "Software Engineer",
+      "period": "2019 – 2022",
+      "location": "TODO",
+      "bullets": [
+        "TODO: Add key achievement",
+        "TODO: Add key achievement"
+      ]
+    }
+  ],
+  "skills": [
+    { "domain": "ML & AI", "items": ["PyTorch", "scikit-learn", "Hugging Face", "LangChain", "RAG"] },
+    { "domain": "Data Engineering", "items": ["Kafka", "ClickHouse", "Spark", "Airflow", "dbt"] },
+    { "domain": "Languages", "items": ["Python", "Go", "SQL", "TypeScript"] },
+    { "domain": "Infrastructure", "items": ["Kubernetes", "AWS SageMaker", "GCP Vertex AI", "Docker"] }
+  ],
+  "projects": [
+    {
+      "name": "india-findata",
+      "description": "Financial data pipeline with analytics dashboard.",
+      "link": "https://github.com/ankitsriv89/india-findata"
+    },
+    {
+      "name": "System Design Portfolio",
+      "description": "50 systems including vector stores and recommendation engines.",
+      "link": "https://anksysdesign.pages.dev"
+    }
+  ],
+  "education": [
+    {
+      "institution": "TODO: Add institution",
+      "degree": "TODO: Add degree",
+      "year": "TODO"
+    }
+  ]
+}

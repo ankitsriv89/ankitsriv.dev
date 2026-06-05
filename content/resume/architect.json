@@ -1,0 +1,59 @@
+{
+  "version": "architect",
+  "label": "Solutions Architect",
+  "name": "Ankit Srivastava",
+  "title": "Solutions Architect — Cloud & Data Platforms",
+  "email": "anksr2018@gmail.com",
+  "github": "https://github.com/ankitsriv89",
+  "linkedin": "https://linkedin.com/in/ankitsriv89",
+  "location": "India",
+  "summary": "Solutions architect with a builder's background in distributed systems and cloud-native data platforms. Designs end-to-end architectures across ingestion, processing, and serving layers with a focus on cost efficiency, reliability, and observability.",
+  "experience": [
+    {
+      "company": "TODO: Add company name",
+      "role": "Senior Software Engineer / Architect",
+      "period": "2022 – Present",
+      "location": "Remote",
+      "bullets": [
+        "TODO: Add architecture decision with business impact",
+        "TODO: Add system design achievement",
+        "TODO: Add cloud cost or reliability win"
+      ]
+    },
+    {
+      "company": "TODO: Add company name",
+      "role": "Software Engineer",
+      "period": "2019 – 2022",
+      "location": "TODO",
+      "bullets": [
+        "TODO: Add key achievement",
+        "TODO: Add key achievement"
+      ]
+    }
+  ],
+  "skills": [
+    { "domain": "Cloud Platforms", "items": ["AWS", "GCP", "Azure", "Cloudflare"] },
+    { "domain": "Data Platforms", "items": ["Kafka", "ClickHouse", "Flink", "Spark", "Airflow"] },
+    { "domain": "Infrastructure", "items": ["Kubernetes", "Terraform", "Docker", "ArgoCD"] },
+    { "domain": "Languages", "items": ["Go", "Python", "TypeScript"] }
+  ],
+  "projects": [
+    {
+      "name": "System Design Portfolio",
+      "description": "50 distributed systems implemented from first principles.",
+      "link": "https://anksysdesign.pages.dev"
+    },
+    {
+      "name": "datastream-lab",
+      "description": "Multi-cloud streaming architecture experiments.",
+      "link": "https://github.com/ankitsriv89/datastream-lab"
+    }
+  ],
+  "education": [
+    {
+      "institution": "TODO: Add institution",
+      "degree": "TODO: Add degree",
+      "year": "TODO"
+    }
+  ]
+}

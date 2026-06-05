@@ -1,0 +1,64 @@
+{
+  "version": "swe",
+  "label": "Software Engineer",
+  "name": "Ankit Srivastava",
+  "title": "Software Engineer — Distributed Systems & Data",
+  "email": "anksr2018@gmail.com",
+  "github": "https://github.com/ankitsriv89",
+  "linkedin": "https://linkedin.com/in/ankitsriv89",
+  "location": "India",
+  "summary": "Software engineer with deep experience building high-throughput distributed systems, real-time data pipelines, and backend infrastructure. Comfortable across the full stack from Kafka consumers to React dashboards, with a bias toward operational simplicity and observable systems.",
+  "experience": [
+    {
+      "company": "TODO: Add company name",
+      "role": "Senior Software Engineer",
+      "period": "2022 – Present",
+      "location": "Remote",
+      "bullets": [
+        "TODO: Add key achievement with measurable impact",
+        "TODO: Add key achievement with measurable impact",
+        "TODO: Add key achievement with measurable impact"
+      ]
+    },
+    {
+      "company": "TODO: Add company name",
+      "role": "Software Engineer",
+      "period": "2019 – 2022",
+      "location": "TODO",
+      "bullets": [
+        "TODO: Add key achievement with measurable impact",
+        "TODO: Add key achievement with measurable impact"
+      ]
+    }
+  ],
+  "skills": [
+    { "domain": "Languages", "items": ["Go", "Python", "TypeScript", "SQL"] },
+    { "domain": "Data & Streaming", "items": ["Kafka", "ClickHouse", "PostgreSQL", "Redis"] },
+    { "domain": "Infrastructure", "items": ["Docker", "Kubernetes", "AWS", "GCP", "Cloudflare"] },
+    { "domain": "Frontend", "items": ["React", "Next.js", "Tailwind CSS"] }
+  ],
+  "projects": [
+    {
+      "name": "System Design Portfolio",
+      "description": "50-project series implementing distributed systems from scratch.",
+      "link": "https://anksysdesign.pages.dev"
+    },
+    {
+      "name": "datastream-lab",
+      "description": "Streaming platform experiments across AWS, GCP, and Azure.",
+      "link": "https://github.com/ankitsriv89/datastream-lab"
+    },
+    {
+      "name": "india-findata",
+      "description": "Indian macro & markets data pipeline with React dashboard.",
+      "link": "https://github.com/ankitsriv89/india-findata"
+    }
+  ],
+  "education": [
+    {
+      "institution": "TODO: Add institution",
+      "degree": "TODO: Add degree",
+      "year": "TODO"
+    }
+  ]
+}

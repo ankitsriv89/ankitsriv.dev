@@ -1,0 +1,29 @@
+---
+title: "Building a Token Bucket Rate Limiter from Scratch"
+date: "2026-01-15"
+description: "How I designed and implemented a distributed token bucket rate limiter in Go — the tradeoffs, the edge cases, and what I'd do differently."
+tags: ["Go", "Distributed Systems", "Rate Limiting"]
+published: true
+---
+
+This is a sample blog post. Replace this content with your own writing.
+
+## The Problem
+
+Rate limiting is one of those problems that looks simple until you have to make it work in a distributed system.
+
+## Token Bucket
+
+The token bucket algorithm allows bursting while enforcing a steady-state rate...
+
+```go
+type TokenBucket struct {
+    capacity  int64
+    tokens    int64
+    refillRate float64
+    lastRefill time.Time
+    mu         sync.Mutex
+}
+```
+
+More content coming soon.
