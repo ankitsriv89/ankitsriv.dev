@@ -1,42 +1,53 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Mono, Space_Grotesk, Inter } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import Sidebar from "@/components/layout/Sidebar";
-
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
+import Shell from "@/components/layout/Shell";
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  display: "swap",
 });
 
-const ibmMono = IBM_Plex_Mono({
-  variable: "--font-ibm-mono",
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains",
   subsets: ["latin"],
-  weight: ["300", "400", "500"],
+  display: "swap",
 });
+
+const DESCRIPTION =
+  "The digital headquarters of Ankit Srivastava — a software engineer and systems thinker building and studying systems across engineering, AI, economics, finance, psychology, and law.";
 
 export const metadata: Metadata = {
-  title: { default: "Ankit Srivastava", template: "%s — Ankit Srivastava" },
-  description: "Engineer and interdisciplinary thinker working across technology, finance, economics, law, and psychology.",
+  title: {
+    default: "Ankit Srivastava — Engineer & Systems Thinker",
+    template: "%s — Ankit Srivastava",
+  },
+  description: DESCRIPTION,
   metadataBase: new URL("https://ankitsriv.dev"),
+  keywords: [
+    "Ankit Srivastava",
+    "software engineer",
+    "systems thinker",
+    "distributed systems",
+    "system design",
+    "AI agents",
+    "economics",
+    "finance",
+  ],
+  authors: [{ name: "Ankit Srivastava" }],
   openGraph: {
-    title: "Ankit Srivastava",
-    description: "Engineer and interdisciplinary thinker working across technology, finance, economics, law, and psychology.",
+    title: "Ankit Srivastava — Engineer & Systems Thinker",
+    description: DESCRIPTION,
     url: "https://ankitsriv.dev",
     siteName: "ankitsriv.dev",
     locale: "en_US",
     type: "website",
   },
   twitter: {
-    card: "summary",
-    title: "Ankit Srivastava",
-    description: "Engineer and interdisciplinary thinker working across technology, finance, economics, law, and psychology.",
+    card: "summary_large_image",
+    title: "Ankit Srivastava — Engineer & Systems Thinker",
+    description: DESCRIPTION,
   },
   robots: { index: true, follow: true },
 };
@@ -45,10 +56,12 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable} ${ibmMono.variable}`}>
-      <body className="min-h-screen flex flex-col lg:flex-row">
-        <Sidebar />
-        <main className="flex-1 min-w-0">{children}</main>
+    <html
+      lang="en"
+      className={`${inter.variable} ${jetbrainsMono.variable}`}
+    >
+      <body className="min-h-screen">
+        <Shell>{children}</Shell>
       </body>
     </html>
   );

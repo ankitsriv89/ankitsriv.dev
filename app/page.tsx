@@ -1,14 +1,6 @@
-import HudShell from "@/components/sections/hud/HudShell";
-import StatusBar from "@/components/sections/hud/StatusBar";
-import HudHero from "@/components/sections/hud/HudHero";
-import DashboardGrid from "@/components/sections/hud/DashboardGrid";
+import HudHome from "@/components/hud/HudHome";
 
+// The homepage is the terminal-HUD mission control.
 export default function Home() {
-  return (
-    <HudShell>
-      <StatusBar />
-      <HudHero />
-      <DashboardGrid />
-    </HudShell>
-  );
+  return <HudHome />;
 }
