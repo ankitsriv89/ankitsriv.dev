@@ -1,13 +1,18 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Mono, Rajdhani } from "next/font/google";
+import { IBM_Plex_Mono, Space_Grotesk, Inter } from "next/font/google";
 import "./globals.css";
-import Nav from "@/components/layout/Nav";
-import Footer from "@/components/layout/Footer";
+import Sidebar from "@/components/layout/Sidebar";
 
-const rajdhani = Rajdhani({
-  variable: "--font-rajdhani",
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700"],
+});
+
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
 });
 
 const ibmMono = IBM_Plex_Mono({
@@ -18,11 +23,11 @@ const ibmMono = IBM_Plex_Mono({
 
 export const metadata: Metadata = {
   title: { default: "Ankit Srivastava", template: "%s — Ankit Srivastava" },
-  description: "Software engineer focused on distributed systems, data pipelines, and backend infrastructure.",
+  description: "Engineer and interdisciplinary thinker working across technology, finance, economics, law, and psychology.",
   metadataBase: new URL("https://ankitsriv.dev"),
   openGraph: {
     title: "Ankit Srivastava",
-    description: "Software engineer focused on distributed systems, data pipelines, and backend infrastructure.",
+    description: "Engineer and interdisciplinary thinker working across technology, finance, economics, law, and psychology.",
     url: "https://ankitsriv.dev",
     siteName: "ankitsriv.dev",
     locale: "en_US",
@@ -31,7 +36,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary",
     title: "Ankit Srivastava",
-    description: "Software engineer focused on distributed systems, data pipelines, and backend infrastructure.",
+    description: "Engineer and interdisciplinary thinker working across technology, finance, economics, law, and psychology.",
   },
   robots: { index: true, follow: true },
 };
@@ -40,11 +45,10 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${rajdhani.variable} ${ibmMono.variable}`}>
-      <body className="min-h-screen flex flex-col">
-        <Nav />
-        <main className="flex-1">{children}</main>
-        <Footer />
+    <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable} ${ibmMono.variable}`}>
+      <body className="min-h-screen flex flex-col lg:flex-row">
+        <Sidebar />
+        <main className="flex-1 min-w-0">{children}</main>
       </body>
     </html>
   );

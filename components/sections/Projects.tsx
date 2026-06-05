@@ -1,111 +1,116 @@
+import Link from "next/link";
+
 export type Project = {
   name: string;
   description: string;
   tags: string[];
+  field: string;        // which discipline this sits in
+  accentClass: string;
   repo?: string;
   live?: string;
-  status: "live" | "building" | "planned";
-  highlight: string;
+  status: "live" | "building" | "research";
 };
 
+// DEMO CONTENT — swap in your real projects.
 export const projects: Project[] = [
   {
-    name: "System Design Portfolio",
+    name: "StreamFlow",
     description:
-      "50-project series implementing distributed systems from scratch: rate limiters, caches, search engines, message queues, and more.",
-    tags: ["Go", "Distributed Systems", "Docker", "Redis", "PostgreSQL"],
+      "Real-time event processing platform for high-volume pipelines, built to stay correct under load and easy to operate.",
+    tags: ["Go", "Kafka", "ClickHouse"],
+    field: "Technology",
+    accentClass: "disc-tech",
     repo: "https://github.com/ankitsriv89/system-design",
     live: "https://anksysdesign.pages.dev",
-    status: "building",
-    highlight: "Architecture-first learning in public",
+    status: "live",
   },
   {
-    name: "datastream-lab",
+    name: "India FinData",
     description:
-      "Streaming platform experiments with local and cloud proofs of concept across AWS, GCP, and Azure using Kafka and ClickHouse.",
-    tags: ["Go", "Kafka", "ClickHouse", "AWS", "GCP", "Azure"],
-    repo: "https://github.com/ankitsriv89/datastream-lab",
-    status: "building",
-    highlight: "Real-time data platform experiments",
-  },
-  {
-    name: "india-findata",
-    description:
-      "Indian macro and markets data pipeline ingesting from RBI, MOSPI, NSE, and BSE with a React dashboard.",
-    tags: ["Python", "FastAPI", "ClickHouse", "React", "NSE", "BSE"],
+      "Macro and markets data pipeline ingesting from RBI, MOSPI, NSE and BSE — turning messy public sources into a clean analytical layer.",
+    tags: ["Python", "FastAPI", "Markets"],
+    field: "Finance",
+    accentClass: "disc-finance",
     repo: "https://github.com/ankitsriv89/india-findata",
     status: "building",
-    highlight: "Finance data pipelines and analytics",
+  },
+  {
+    name: "Incentive Lab",
+    description:
+      "Small simulations exploring how incentive structures and information asymmetry shape market outcomes — economics made runnable.",
+    tags: ["Simulation", "Game theory", "Python"],
+    field: "Economics",
+    accentClass: "disc-econ",
+    status: "research",
+  },
+  {
+    name: "ConsentLayer",
+    description:
+      "A study of data-privacy regulation translated into enforceable system constraints — where law meets architecture.",
+    tags: ["Privacy", "Compliance", "Policy"],
+    field: "Law",
+    accentClass: "disc-law",
+    status: "research",
+  },
+  {
+    name: "Decision Notes",
+    description:
+      "Notes and tooling on cognitive bias in decision-making, and how interface design can nudge toward better choices.",
+    tags: ["Behavioral", "UX", "Cognition"],
+    field: "Psychology",
+    accentClass: "disc-psych",
+    status: "research",
   },
 ];
 
-const statusColor: Record<Project["status"], string> = {
-  live:     "var(--green)",
-  building: "var(--amber)",
-  planned:  "var(--text-dim)",
+const statusLabel: Record<Project["status"], { text: string; color: string }> = {
+  live:     { text: "Live",      color: "var(--green)" },
+  building: { text: "Building",  color: "var(--amber)" },
+  research: { text: "Research",  color: "var(--text-muted)" },
 };
 
 export function ProjectCard({ project }: { project: Project }) {
+  const s = statusLabel[project.status];
   return (
-    <article className="panel flex h-full flex-col gap-5 p-5">
-      <div className="flex items-start justify-between gap-4">
-        <div>
-          <div className="label-cyan">{project.highlight}</div>
-          <h3 className="mt-3 text-2xl font-semibold" style={{ color: "var(--text-bright)" }}>
-            {project.name}
-          </h3>
+    <article className={`panel ${project.accentClass} flex flex-col gap-4 p-6`}>
+      <div className="flex items-center justify-between gap-3">
+        <div className="flex items-center gap-2">
+          <span className="disc-dot" />
+          <span className="text-xs" style={{ color: "var(--text-muted)" }}>{project.field}</span>
         </div>
-        <span
-          className="mono shrink-0 rounded-full border px-2.5 py-1 text-[0.68rem]"
-          style={{
-            color: statusColor[project.status],
-            borderColor: "var(--border)",
-            background: "rgba(255,255,255,0.03)",
-          }}
-        >
-          {project.status}
-        </span>
+        <span className="text-xs" style={{ color: s.color }}>{s.text}</span>
       </div>
 
-      <p className="flex-1 text-base leading-7" style={{ color: "var(--text-dim)" }}>
-        {project.description}
-      </p>
+      <div>
+        <h3 className="font-display text-xl font-semibold" style={{ color: "var(--text-bright)" }}>
+          {project.name}
+        </h3>
+        <p className="mt-2 text-sm leading-relaxed" style={{ color: "var(--text-dim)" }}>
+          {project.description}
+        </p>
+      </div>
 
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-1.5">
         {project.tags.map((tag) => (
           <span
             key={tag}
-            className="mono rounded-md border px-2.5 py-1 text-xs"
-            style={{
-              background: "rgba(255,255,255,0.03)",
-              color: "var(--text-dim)",
-              borderColor: "var(--border)",
-            }}
+            className="text-[0.72rem] rounded-md px-2 py-1"
+            style={{ background: "rgba(255,255,255,0.03)", border: "1px solid var(--border)", color: "var(--text-muted)" }}
           >
             {tag}
           </span>
         ))}
       </div>
 
-      <div className="flex items-center gap-3 pt-1">
-        {project.repo && (
-          <a
-            href={project.repo}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="button-muted min-h-0 px-3 py-2"
-          >
-            Repo
+      <div className="mt-auto flex items-center gap-4 pt-1">
+        {project.live && (
+          <a href={project.live} target="_blank" rel="noopener noreferrer" className="text-sm link-soft" style={{ color: "var(--cyan)" }}>
+            Visit →
           </a>
         )}
-        {project.live && (
-          <a
-            href={project.live}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="button-secondary min-h-0 px-3 py-2"
-          >
-            Live
+        {project.repo && (
+          <a href={project.repo} target="_blank" rel="noopener noreferrer" className="text-sm link-soft">
+            Source
           </a>
         )}
       </div>
@@ -115,16 +120,18 @@ export function ProjectCard({ project }: { project: Project }) {
 
 export default function Projects() {
   return (
-    <section className="container-page pb-24 pt-6">
-      <div className="mb-8 flex items-center gap-4">
-        <span className="label-cyan">Selected work</span>
-        <div className="section-rule" />
-        <a href="/projects" className="mono text-xs link-soft">
-          View all
-        </a>
+    <section className="px-6 md:px-12 py-12 md:py-16" style={{ borderTop: "1px solid var(--border)" }}>
+      <div className="flex items-end justify-between gap-4 mb-10">
+        <div>
+          <div className="eyebrow mb-3">Selected work</div>
+          <h2 className="font-display text-2xl md:text-3xl font-bold" style={{ color: "var(--text-bright)" }}>
+            Things I&apos;ve built and explored.
+          </h2>
+        </div>
+        <Link href="/projects" className="text-sm link-soft whitespace-nowrap">All work →</Link>
       </div>
 
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {projects.map((p) => (
           <ProjectCard key={p.name} project={p} />
         ))}

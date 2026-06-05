@@ -1,11 +1,14 @@
-import Hero from "@/components/sections/Hero";
-import Projects from "@/components/sections/Projects";
+import HudShell from "@/components/sections/hud/HudShell";
+import StatusBar from "@/components/sections/hud/StatusBar";
+import HudHero from "@/components/sections/hud/HudHero";
+import DashboardGrid from "@/components/sections/hud/DashboardGrid";
 
 export default function Home() {
   return (
-    <>
-      <Hero />
-      <Projects />
-    </>
+    <HudShell>
+      <StatusBar />
+      <HudHero />
+      <DashboardGrid />
+    </HudShell>
   );
 }
