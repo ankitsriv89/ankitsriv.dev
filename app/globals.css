@@ -1,49 +1,49 @@
 @import "tailwindcss";
 
-/* ── Cyberpunk design tokens ── */
+/* Core design tokens */
 :root {
-  --bg:           #050810;
-  --bg2:          #090d1a;
-  --bg3:          #0d1424;
-  --panel:        #0b1120;
-  --border:       #1a2540;
-  --border-bright:#243560;
-  --cyan:         #00d4ff;
-  --cyan-dim:     #0090b3;
-  --green:        #00ff9d;
-  --green-dim:    #00a362;
-  --amber:        #ffb700;
-  --amber-dim:    #8a6200;
-  --red:          #ff3860;
-  --text:         #c8d8f0;
-  --text-dim:     #4a6080;
-  --text-bright:  #e8f0ff;
-
-  --glow-cyan:    0 0 20px rgba(0,212,255,0.3), 0 0 40px rgba(0,212,255,0.1);
-  --glow-green:   0 0 20px rgba(0,255,157,0.3), 0 0 40px rgba(0,255,157,0.1);
-  --glow-amber:   0 0 20px rgba(255,183,0,0.3),  0 0 40px rgba(255,183,0,0.1);
+  --bg: #05070d;
+  --bg2: #080c14;
+  --bg3: #0d1420;
+  --panel: rgba(13, 20, 32, 0.82);
+  --panel-solid: #0d1420;
+  --border: #20304a;
+  --border-bright: #345174;
+  --cyan: #3fd7ff;
+  --cyan-dim: #4da7bf;
+  --green: #59e6ad;
+  --green-dim: #53a982;
+  --amber: #f6c965;
+  --red: #ff5d7e;
+  --text: #d6e1ef;
+  --text-dim: #8ea0b8;
+  --text-muted: #62738b;
+  --text-bright: #f3f7fb;
+  --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
 }
 
 @theme inline {
   --color-background: var(--bg);
   --color-foreground: var(--text);
-  --font-mono: var(--font-ibm-mono);
-  --font-sans: var(--font-rajdhani);
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-sans: "Rajdhani", ui-sans-serif, system-ui, sans-serif;
 }
 
-/* ── Base ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 
 body {
-  background: var(--bg);
+  background:
+    radial-gradient(circle at 20% 0%, rgba(63, 215, 255, 0.09), transparent 28rem),
+    linear-gradient(180deg, var(--bg) 0%, #070b12 42%, var(--bg) 100%);
   color: var(--text);
   font-family: var(--font-rajdhani), 'Rajdhani', sans-serif;
   min-height: 100vh;
   overflow-x: hidden;
+  font-size: 17px;
+  line-height: 1.6;
 }
 
-/* ── Scanline overlay ── */
 body::before {
   content: '';
   position: fixed;
@@ -59,18 +59,26 @@ body::before {
   z-index: 9999;
 }
 
-/* ── Typography ── */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-rajdhani), 'Rajdhani', sans-serif;
   color: var(--text-bright);
-  letter-spacing: 0.05em;
+  letter-spacing: 0;
+  line-height: 0.95;
 }
 
 code, pre, .mono {
   font-family: var(--font-ibm-mono), 'IBM Plex Mono', monospace;
 }
 
-/* ── Utility classes ── */
+a {
+  text-decoration: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 3px;
+}
+
 .text-cyan   { color: var(--cyan); }
 .text-green  { color: var(--green); }
 .text-amber  { color: var(--amber); }
@@ -80,40 +88,92 @@ code, pre, .mono {
 .border-panel { border-color: var(--border); }
 .bg-panel     { background: var(--panel); }
 
-.glow-cyan  { box-shadow: var(--glow-cyan); }
-.glow-green { box-shadow: var(--glow-green); }
-
-/* ── Panel card ── */
 .panel {
   background: var(--panel);
   border: 1px solid var(--border);
-  border-radius: 4px;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  border-radius: 8px;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.03) inset;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 .panel:hover {
   border-color: var(--border-bright);
-  box-shadow: 0 0 30px rgba(0,212,255,0.08);
+  box-shadow: var(--shadow);
+  transform: translateY(-2px);
 }
 
-/* ── Glowing label ── */
 .label-cyan {
   font-family: var(--font-ibm-mono), monospace;
-  font-size: 0.7rem;
-  letter-spacing: 0.12em;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--cyan);
 }
 
-/* ── Scrollbar ── */
+.container-page {
+  width: min(100% - 2rem, 76rem);
+  margin-inline: auto;
+}
+
+.section-rule {
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(90deg, var(--border), transparent);
+}
+
+.button-primary,
+.button-secondary,
+.button-muted {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  padding: 0.75rem 1rem;
+  font-family: var(--font-ibm-mono), monospace;
+  font-size: 0.78rem;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+}
+
+.button-primary {
+  background: rgba(63, 215, 255, 0.12);
+  border-color: rgba(63, 215, 255, 0.52);
+  color: var(--text-bright);
+}
+
+.button-secondary {
+  background: rgba(89, 230, 173, 0.09);
+  border-color: rgba(89, 230, 173, 0.38);
+  color: var(--green);
+}
+
+.button-muted {
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text);
+}
+
+.button-primary:hover,
+.button-secondary:hover,
+.button-muted:hover {
+  transform: translateY(-1px);
+  border-color: var(--cyan);
+}
+
+.link-soft {
+  color: var(--text-dim);
+  transition: color 0.15s ease;
+}
+.link-soft:hover { color: var(--text-bright); }
+
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: var(--bg2); }
 ::-webkit-scrollbar-thumb { background: var(--border-bright); border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--cyan-dim); }
 
-/* ── Selection ── */
 ::selection { background: rgba(0,212,255,0.2); color: var(--cyan); }
 
-/* ── Animations ── */
 @keyframes pulse-cyan {
   0%, 100% { opacity: 1; }
   50%       { opacity: 0.4; }
@@ -132,7 +192,6 @@ code, pre, .mono {
 .animate-pulse-cyan { animation: pulse-cyan 2s ease-in-out infinite; }
 .animate-flicker    { animation: flicker 8s ease-in-out infinite; }
 
-/* ── Link hover utilities (CSS-only, safe for Server Components) ── */
 .footer-link {
   color: var(--text-dim);
   transition: color 0.15s;

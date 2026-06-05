@@ -1,13 +1,12 @@
+import PlaceholderPage from "@/components/sections/PlaceholderPage";
+
 export default function Page() {
   return (
-    <section className="max-w-7xl mx-auto px-4 py-24">
-      <div className="flex items-center gap-4 mb-10">
-        <span className="label-cyan">DIARY</span>
-        <div className="flex-1 h-px" style={{ background: "var(--border)" }} />
-      </div>
-      <p className="mono text-sm" style={{ color: "var(--text-dim)" }}>
-        Coming soon — this section is under construction.
-      </p>
-    </section>
+    <PlaceholderPage
+      eyebrow="Diary"
+      title="A build log for the work between releases."
+      description="The diary will be lighter than the blog: progress notes, open questions, and small discoveries while projects evolve."
+      items={["Weekly build notes", "Reading and research trails", "Decisions worth revisiting"]}
+    />
   );
 }
